@@ -1,8 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package apps;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import models.Platform;
+import views.Register;
 
 /**
  *
@@ -10,11 +12,43 @@ package apps;
  */
 public class MainFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainFrame
-     */
+    private int currentUser;
+    private JFrame app;
+    private Platform platform;
+    
     public MainFrame() {
-        initComponents();
+        this.app = new JFrame("Wings Nusa Voyage");
+        this.platform = new Platform();
+        this.app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.app.setVisible(true);
+        this.app.setSize(500, 500);
+        this.app.setResizable(false);
+        this.app.setLocationRelativeTo(null);
+    }
+
+    public int getCurrentUser() {
+        return currentUser;
+    }
+
+    public void setCurrentUser(int currentUser) {
+        this.currentUser = currentUser;
+    }
+    
+    public Platform getPlatform () {
+        return this.platform;
+    }
+    
+    private void changeView(JPanel view) {
+       app.getContentPane().removeAll();
+       app.getContentPane().add(view);
+       app.revalidate();
+       app.repaint();
+    }
+    
+    
+    public void getRegisterView() {
+        changeView(new Register(this));
+        app.setSize(680, 500);
     }
 
     /**
@@ -70,10 +104,9 @@ public class MainFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainFrame().setVisible(true);
-            }
+        SwingUtilities.invokeLater(() -> {
+            MainFrame mainFrame = new MainFrame();
+            mainFrame.getRegisterView();
         });
     }
 
