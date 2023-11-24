@@ -1,8 +1,9 @@
 package models;
+import models.implementations.UserImp;
+public class Admin extends UserImp {
 
-public class Admin extends User {
-
-    public Admin(String firstName, String lastName, String phone, String email, String password) {
-        super(firstName, lastName, phone, email, password);
+    public Admin(String username, String password ) {
+        super(username, password, "admin");
     }
+
 }

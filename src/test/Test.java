@@ -3,16 +3,24 @@ package test;
 import helper.Auth;
 import java.util.ArrayList;
 import models.*;
+import models.implementations.AirlineImp;
+import models.implementations.UserImp;
 
 public class Test {
     public static void main(String[] args) {
-        ArrayList<User> users = new ArrayList<User>();
-        User user1 = new Admin("Sultan", "Firdaus", "081234567890", "sultanfirdaus324@gmail.com", "tanfi2514");
-        User user2 = new Customer("Sultan", "Firdaus", "081234567890", "sultanfirdaus324@gmail.com", "tanfi2514");
+        ArrayList<UserImp> users = new ArrayList<UserImp>();
+        UserImp user1 = new Admin("admin", "admin");
+        UserImp user2 = new Customer("customer", "customer");
+        AirlineImp lionAir = new Plane("boeing", "semarang", "blitar");
+        lionAir.setDestination("surabaya");
+        System.out.println(lionAir.getDestination());
         users.add(user1);
         users.add(user2);
-
-        System.out.println(Auth.login("sultanfirdaus324@gmail.com", "tanfi2514", users));
-        System.out.println(Auth.checkRole(users.get(0)));
+        if(user2 instanceof Customer) {
+            Customer customerUser = (Customer) user2;
+            customerUser.getCart().addCart(lionAir);
+            customerUser.getCart().addCart(lionAir);
+            System.out.println(customerUser.getCart().checkout(0));
+        }
     }
 }

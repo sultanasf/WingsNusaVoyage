@@ -2,23 +2,23 @@ package helper;
 
 import java.util.ArrayList;
 
-import models.User;
 import models.Admin;
 import models.Customer;
+import models.implementations.UserImp;
 
 public class Auth {
     // TODO: Implement logic to authenticate user (Admin/Customer)
 
-    public static boolean login(String email, String password, ArrayList<User> users) {
-        for (User user : users) {
-            if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
+    public static boolean login(String username, String password, ArrayList<UserImp> users) {
+        for (UserImp user : users) {
+            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
                 return true;
             }
         }
         return false;
     }
 
-    public static int checkRole(User user) {
+    public static int checkRole(UserImp user) {
         if (user instanceof Admin) {
             return 2;
         } else if (user instanceof Customer) {
