@@ -12,6 +12,21 @@ public class Platform {
         this.users.add(user);
     }
     
+    public UserImp getUserIndex(int index) {
+        return this.users.get(index);
+    }
+    
+    public int getUserObject(String username, String password) throws Exception {
+        int index = 0;
+        for(UserImp user : users) {
+            if(user.auth(username, password)) {
+                return index;
+            }
+            index++;
+        }
+        throw new Exception("not found");
+    }
+    
     public void deleteFromIndexUser(int index) {
         this.users.remove(index);
     }

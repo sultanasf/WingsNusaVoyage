@@ -4,12 +4,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import models.Platform;
+import views.AdminDashboard;
+import views.CustomerDashboard;
+import views.CustomerEditProfil;
 import views.Register;
 
-/**
- *
- * @author Sultan Firdaus
- */
 public class MainFrame extends javax.swing.JFrame {
 
     private int currentUser;
@@ -48,6 +47,21 @@ public class MainFrame extends javax.swing.JFrame {
     
     public void getRegisterView() {
         changeView(new Register(this));
+        app.setSize(680, 500);
+    }
+    
+    public void getAdminDashboard() {
+        changeView(new AdminDashboard(this));
+        app.setSize(680, 500);
+    }
+    
+    public void getCustomerDashboard() {
+        changeView(new CustomerDashboard(this));
+        app.setSize(680, 500);
+    }
+    
+    public void getCustomerEditProfil() {
+        changeView(new CustomerEditProfil(this));
         app.setSize(680, 500);
     }
 
