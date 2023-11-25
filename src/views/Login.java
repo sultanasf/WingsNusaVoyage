@@ -5,28 +5,28 @@
 package views;
 
 import apps.MainFrame;
+import helper.Auth;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import models.Admin;
-import models.Customer;
-import models.Platform;
 import models.implementations.UserImp;
 
 /**
  *
  * @author HP
  */
-public class Register extends javax.swing.JPanel {
+public class Login extends javax.swing.JPanel {
 
+    /**
+     * Creates new form Login
+     */
+    
     private MainFrame mainFrame;
     
-    public Register(MainFrame mainFrame) {
+    public Login(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
         initComponents();
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,10 +45,8 @@ public class Register extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         password = new javax.swing.JPasswordField();
-        isAdmin = new javax.swing.JCheckBox();
-        isCustomer = new javax.swing.JCheckBox();
         signup = new javax.swing.JButton();
-        signIn = new javax.swing.JLabel();
+        signUp = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
@@ -77,7 +75,7 @@ public class Register extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Register");
+        jLabel2.setText("Login");
 
         jLabel3.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
@@ -87,33 +85,25 @@ public class Register extends javax.swing.JPanel {
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("Password");
 
-        isAdmin.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
-        isAdmin.setForeground(new java.awt.Color(51, 51, 51));
-        isAdmin.setText("Admin");
-
-        isCustomer.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
-        isCustomer.setForeground(new java.awt.Color(51, 51, 51));
-        isCustomer.setText("Customer");
-
         signup.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
-        signup.setText("Sign Up");
+        signup.setText("Sign in");
         signup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 signupActionPerformed(evt);
             }
         });
 
-        signIn.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
-        signIn.setForeground(new java.awt.Color(51, 51, 51));
-        signIn.setText("Sign in");
-        signIn.addMouseListener(new java.awt.event.MouseAdapter() {
+        signUp.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
+        signUp.setForeground(new java.awt.Color(51, 51, 51));
+        signUp.setText("Sign Up");
+        signUp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                signInMouseClicked(evt);
+                signUpMouseClicked(evt);
             }
         });
 
         jLabel6.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("or");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -123,11 +113,7 @@ public class Register extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(isAdmin)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
-                        .addComponent(isCustomer))
-                    .addComponent(password, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(password, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3)
                     .addComponent(username, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -135,22 +121,23 @@ public class Register extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(signup, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel6)
-                        .addGap(18, 18, 18)
-                        .addComponent(signIn))
+                        .addGap(160, 160, 160)
+                        .addComponent(jLabel2))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(152, 152, 152)
-                        .addComponent(jLabel2)))
-                .addContainerGap(90, Short.MAX_VALUE))
+                        .addGap(58, 58, 58)
+                        .addComponent(signup, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel6)
+                        .addGap(13, 13, 13)
+                        .addComponent(signUp)))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel2)
-                .addGap(22, 22, 22)
+                .addGap(16, 16, 16)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,16 +145,12 @@ public class Register extends javax.swing.JPanel {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(isAdmin)
-                    .addComponent(isCustomer))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(signup, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(signIn)
+                    .addComponent(signUp)
                     .addComponent(jLabel6))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addGap(44, 44, 44))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -178,53 +161,45 @@ public class Register extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(143, 143, 143))
+                .addGap(133, 133, 133))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
+                .addGap(29, 29, 29))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupActionPerformed
         String username = this.username.getText();
-        String password = this.password.getText();
-        Platform app = this.mainFrame.getPlatform();
-        UserImp customer;
-        UserImp admin;
-        
-        if(this.isAdmin.isSelected() && !"".equals(username) && !"".equals(password)) {
-            admin = new Admin(username, password);
-            app.addUser(admin);
-            this.mainFrame.getAdminDashboard();
-        }
-        else if(this.isCustomer.isSelected() && !"".equals(username) && !"".equals(password)) {
-            customer = new Customer(username, password);
-            app.addUser(customer);
-            try {
-                this.mainFrame.setCurrentUser(app.getUserObject(username, password));
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "not found");
+        String email = this.password.getText();
+        try {
+            int currentUser = mainFrame.getPlatform().getUserObject(username, email);
+            mainFrame.setCurrentUser(currentUser);
+            UserImp user = mainFrame.getPlatform().getUserIndex(currentUser);
+            if(Auth.checkRole(user) == 2) {
+                mainFrame.getAdminDashboard();
             }
-            this.mainFrame.getCustomerDashboard();
-        }
-        else {
-            JOptionPane.showMessageDialog(this, "Gagal Register");
+            else if(Auth.checkRole(user) == 1) {
+                mainFrame.getCustomerDashboard();
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "user not found");
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex);
         }
     }//GEN-LAST:event_signupActionPerformed
 
-    private void signInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signInMouseClicked
-        mainFrame.getLoginView();
-    }//GEN-LAST:event_signInMouseClicked
+    private void signUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpMouseClicked
+        mainFrame.getRegisterView();
+    }//GEN-LAST:event_signUpMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox isAdmin;
-    private javax.swing.JCheckBox isCustomer;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -233,7 +208,7 @@ public class Register extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField password;
-    private javax.swing.JLabel signIn;
+    private javax.swing.JLabel signUp;
     private javax.swing.JButton signup;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables

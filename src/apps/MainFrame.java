@@ -7,6 +7,7 @@ import models.Platform;
 import views.AdminDashboard;
 import views.CustomerDashboard;
 import views.CustomerEditProfil;
+import views.Login;
 import views.Register;
 
 public class MainFrame extends javax.swing.JFrame {
@@ -62,6 +63,11 @@ public class MainFrame extends javax.swing.JFrame {
     
     public void getCustomerEditProfil() {
         changeView(new CustomerEditProfil(this));
+        app.setSize(680, 500);
+    }
+    
+    public void getLoginView() {
+        changeView(new Login(this));
         app.setSize(680, 500);
     }
 
