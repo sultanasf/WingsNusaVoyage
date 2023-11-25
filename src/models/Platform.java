@@ -35,6 +35,14 @@ public class Platform {
         this.users.remove(user);
     }
     
+    public ArrayList<AirlineImp> getAirline() {
+        return airlines;
+    }
+    
+    public AirlineImp getAirLinesIndex(int index) {
+        return airlines.get(index);
+    }
+    
     public void addAirlines(AirlineImp airline) {
         this.airlines.add(airline);
     }

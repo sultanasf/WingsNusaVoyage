@@ -3,8 +3,11 @@ package apps;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import models.Plane;
 import models.Platform;
+import models.implementations.AirlineImp;
 import views.AdminDashboard;
+import views.BookingAirline;
 import views.CustomerDashboard;
 import views.CustomerEditProfil;
 import views.Login;
@@ -70,6 +73,11 @@ public class MainFrame extends javax.swing.JFrame {
         changeView(new Login(this));
         app.setSize(680, 500);
     }
+    
+    public void getBookingAirline() {
+        changeView(new BookingAirline(this));
+        app.setSize(680, 500);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -126,6 +134,13 @@ public class MainFrame extends javax.swing.JFrame {
         /* Create and display the form */
         SwingUtilities.invokeLater(() -> {
             MainFrame mainFrame = new MainFrame();
+            AirlineImp airline1 = new Plane("Boeing", "Surabaya", "Blitar");
+            AirlineImp airline2 = new Plane("Boeing", "Jakarta", "Malang");
+            mainFrame.getPlatform().addAirlines(airline1);
+            mainFrame.getPlatform().addAirlines(airline2);
+            mainFrame.getPlatform().addAirlines(airline2);
+            mainFrame.getPlatform().addAirlines(airline2);
+            mainFrame.getPlatform().addAirlines(airline2);
             mainFrame.getRegisterView();
         });
     }
