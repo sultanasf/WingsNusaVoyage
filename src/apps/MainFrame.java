@@ -1,8 +1,8 @@
 package apps;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import models.Helicopter;
 import models.Plane;
 import models.Platform;
 import models.implementations.AirlineImp;
@@ -16,17 +16,11 @@ import views.Register;
 public class MainFrame extends javax.swing.JFrame {
 
     private int currentUser;
-    private JFrame app;
     private Platform platform;
-    
+
     public MainFrame() {
-        this.app = new JFrame("Wings Nusa Voyage");
+        initComponents();
         this.platform = new Platform();
-        this.app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.app.setVisible(true);
-        this.app.setSize(500, 500);
-        this.app.setResizable(false);
-        this.app.setLocationRelativeTo(null);
     }
 
     public int getCurrentUser() {
@@ -36,47 +30,41 @@ public class MainFrame extends javax.swing.JFrame {
     public void setCurrentUser(int currentUser) {
         this.currentUser = currentUser;
     }
-    
-    public Platform getPlatform () {
+
+    public Platform getPlatform() {
         return this.platform;
     }
-    
+
     private void changeView(JPanel view) {
-       app.getContentPane().removeAll();
-       app.getContentPane().add(view);
-       app.revalidate();
-       app.repaint();
+        this.getContentPane().removeAll();
+        this.getContentPane().add(view);
+        this.pack();
+        this.revalidate();
+        this.repaint();
     }
-    
-    
+
     public void getRegisterView() {
         changeView(new Register(this));
-        app.setSize(680, 500);
     }
-    
+
     public void getAdminDashboard() {
         changeView(new AdminDashboard(this));
-        app.setSize(680, 500);
     }
-    
+
     public void getCustomerDashboard() {
         changeView(new CustomerDashboard(this));
-        app.setSize(680, 500);
     }
-    
+
     public void getCustomerEditProfil() {
         changeView(new CustomerEditProfil(this));
-        app.setSize(680, 500);
     }
-    
+
     public void getLoginView() {
         changeView(new Login(this));
-        app.setSize(680, 500);
     }
-    
+
     public void getBookingAirline() {
         changeView(new BookingAirline(this));
-        app.setSize(680, 500);
     }
 
     /**
@@ -89,17 +77,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setTitle("Wings Nusa Voyage");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -136,11 +114,14 @@ public class MainFrame extends javax.swing.JFrame {
             MainFrame mainFrame = new MainFrame();
             AirlineImp airline1 = new Plane("Boeing", "Surabaya", "Blitar");
             AirlineImp airline2 = new Plane("Boeing", "Jakarta", "Malang");
+            AirlineImp airline3 = new Helicopter("Marv", "Arab", "Indonesia");
+            mainFrame.getPlatform().addAirlines(airline2);
             mainFrame.getPlatform().addAirlines(airline1);
             mainFrame.getPlatform().addAirlines(airline2);
             mainFrame.getPlatform().addAirlines(airline2);
             mainFrame.getPlatform().addAirlines(airline2);
-            mainFrame.getPlatform().addAirlines(airline2);
+            mainFrame.getPlatform().addAirlines(airline3);
+            mainFrame.setVisible(true);
             mainFrame.getRegisterView();
         });
     }
