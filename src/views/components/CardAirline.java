@@ -4,7 +4,10 @@
  */
 package views.components;
 
+import javax.swing.JOptionPane;
+import models.Customer;
 import models.implementations.AirlineImp;
+import views.BookingAirline;
 
 /**
  *
@@ -14,8 +17,10 @@ public class CardAirline extends javax.swing.JPanel {
 
 
     private AirlineImp airline;
+    private BookingAirline bookingAirline;
     
-    public CardAirline(AirlineImp airline) {
+    public CardAirline(AirlineImp airline, BookingAirline bookingAirline) {
+        this.bookingAirline = bookingAirline;
         this.airline = airline;
         initComponents();
         this.origin.setText(airline.getOrigin());
@@ -46,6 +51,7 @@ public class CardAirline extends javax.swing.JPanel {
         availableSeats = new javax.swing.JLabel();
         cart = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        detail = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 204, 204));
 
@@ -90,10 +96,22 @@ public class CardAirline extends javax.swing.JPanel {
         availableSeats.setText("85");
 
         cart.setText("Add to Cart");
+        cart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cartActionPerformed(evt);
+            }
+        });
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("----------------------------------------------------------------------------------------------------------------------------------");
+
+        detail.setText("Detail");
+        detail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                detailActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -123,15 +141,17 @@ public class CardAirline extends javax.swing.JPanel {
                         .addComponent(jLabel7)
                         .addGap(118, 118, 118))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cart, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(classLine))
+                        .addGap(89, 89, 89)
+                        .addComponent(classLine)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(availableSeats)
+                .addGap(165, 165, 165)
+                .addComponent(cart, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(detail, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -154,12 +174,29 @@ public class CardAirline extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(availableSeats)
-                    .addComponent(cart, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cart, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(detail, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void detailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailActionPerformed
+        this.bookingAirline.getDetailAirline(airline);
+    }//GEN-LAST:event_detailActionPerformed
+
+    private void cartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartActionPerformed
+        int currentUser = this.bookingAirline.getMainFrame().getCurrentUser();
+        Customer customer = (Customer) this.bookingAirline.getMainFrame().getPlatform().getUserIndex(currentUser);
+        boolean succes = customer.getCart().addCart(airline);
+        if(succes) {
+            JOptionPane.showMessageDialog(this, "Berhasil ditambahkan ke cart !");
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Gagal Menambahkan ke Cart !");
+        }
+    }//GEN-LAST:event_cartActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -167,6 +204,7 @@ public class CardAirline extends javax.swing.JPanel {
     private javax.swing.JButton cart;
     private javax.swing.JLabel classLine;
     private javax.swing.JLabel destination;
+    private javax.swing.JButton detail;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -177,7 +215,4 @@ public class CardAirline extends javax.swing.JPanel {
     private javax.swing.JLabel type;
     // End of variables declaration//GEN-END:variables
 
-    private String toString(int seats) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

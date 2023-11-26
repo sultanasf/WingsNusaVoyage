@@ -7,8 +7,8 @@ public class Plane extends AirlineImp{
     
     private String maskapai;
     
-    public Plane(String type, String destination, String origin) {
-        super(type, destination, origin);
+    public Plane(String type, String destination, String origin, String description) {
+        super(type, destination, origin, description);
     }
 
     public String getMaskapai() {

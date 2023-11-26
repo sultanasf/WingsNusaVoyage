@@ -12,14 +12,24 @@ public class AirlineImp implements Route, TypeAirline{
     private int seats;
     private String classAirline;
     private int availableSeats;
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
     
-    public AirlineImp(String type, String destination, String origin ) {
+    public AirlineImp(String type, String destination, String origin, String description ) {
         this.destination = destination;
         this.origin = origin;
         this.type = type;
         this.seats = 0;
         this.classAirline = "economy";
         this.availableSeats = seats;
+        this.description = description;
     }
     
     @Override

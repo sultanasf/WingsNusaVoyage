@@ -134,8 +134,8 @@ public class MainFrame extends javax.swing.JFrame {
         /* Create and display the form */
         SwingUtilities.invokeLater(() -> {
             MainFrame mainFrame = new MainFrame();
-            AirlineImp airline1 = new Plane("Boeing", "Surabaya", "Blitar");
-            AirlineImp airline2 = new Plane("Boeing", "Jakarta", "Malang");
+            AirlineImp airline1 = new Plane("Boeing", "Surabaya", "Blitar", "jsdwhuwhwugryw");
+            AirlineImp airline2 = new Plane("Boeing", "Jakarta", "Malang", "advbavdhafdaghdfagdfadghfaghdfad");
             mainFrame.getPlatform().addAirlines(airline1);
             mainFrame.getPlatform().addAirlines(airline2);
             mainFrame.getPlatform().addAirlines(airline2);

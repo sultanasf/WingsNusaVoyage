@@ -12,6 +12,7 @@ public class Cart {
         try {
             AirlineImp airline = listCart.get(index);
             booking.addBooking(airline);
+            listCart.remove(index);
             return true;
         }
         catch(Exception e) {
