@@ -3,27 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/D:/Semester%203/Pemrograman%20Berbasis%20Objek/PostTest/WingsNusaVoyage/</file>
-=======
-            <file>file:/C:/File%20PENS/semester-3/praktikum-oop/WingsNusaVoyage/src/models/Admin.java</file>
-            <file>file:/C:/File%20PENS/semester-3/praktikum-oop/WingsNusaVoyage/src/views/Register.java</file>
-            <file>file:/C:/File%20PENS/semester-3/praktikum-oop/WingsNusaVoyage/src/models/Customer.java</file>
-            <file>file:/C:/File%20PENS/semester-3/praktikum-oop/WingsNusaVoyage/src/models/implementations/UserImp.java</file>
-            <file>file:/C:/File%20PENS/semester-3/praktikum-oop/WingsNusaVoyage/src/models/implementations/AirlineImp.java</file>
-            <file>file:/C:/File%20PENS/semester-3/praktikum-oop/WingsNusaVoyage/src/views/CustomerDashboard.java</file>
-            <file>file:/C:/File%20PENS/semester-3/praktikum-oop/WingsNusaVoyage/src/views/BookingAirline.java</file>
-            <file>file:/C:/File%20PENS/semester-3/praktikum-oop/WingsNusaVoyage/src/test/Test.java</file>
-            <file>file:/C:/File%20PENS/semester-3/praktikum-oop/WingsNusaVoyage/src/models/Helicopter.java</file>
-            <file>file:/C:/File%20PENS/semester-3/praktikum-oop/WingsNusaVoyage/src/apps/MainFrame.java</file>
-            <file>file:/C:/File%20PENS/semester-3/praktikum-oop/WingsNusaVoyage/src/views/Login.java</file>
-            <file>file:/C:/File%20PENS/semester-3/praktikum-oop/WingsNusaVoyage/src/models/Platform.java</file>
-            <file>file:/C:/File%20PENS/semester-3/praktikum-oop/WingsNusaVoyage/src/views/AdminDashboard.java</file>
-            <file>file:/C:/File%20PENS/semester-3/praktikum-oop/WingsNusaVoyage/src/views/components/CardAirline.java</file>
-            <file>file:/C:/File%20PENS/semester-3/praktikum-oop/WingsNusaVoyage/src/models/Plane.java</file>
-            <file>file:/C:/File%20PENS/semester-3/praktikum-oop/WingsNusaVoyage/src/views/CustomerEditProfil.java</file>
-            <file>file:/C:/File%20PENS/semester-3/praktikum-oop/WingsNusaVoyage/src/helper/Auth.java</file>
->>>>>>> 76adce1b7c00cd0951b49bddf1e55dd0ae3d01d0
+            <file>file:/D:/Semester%203/Pemrograman%20Berbasis%20Objek/PostTest/WingsNusaVoyage/src/views/AdminAddAirline.java</file>
+            <file>file:/D:/Semester%203/Pemrograman%20Berbasis%20Objek/PostTest/WingsNusaVoyage/src/models/implementations/AirlineImp.java</file>
+            <file>file:/D:/Semester%203/Pemrograman%20Berbasis%20Objek/PostTest/WingsNusaVoyage/src/models/Platform.java</file>
+            <file>file:/D:/Semester%203/Pemrograman%20Berbasis%20Objek/PostTest/WingsNusaVoyage/src/apps/MainFrame.java</file>
+            <file>file:/D:/Semester%203/Pemrograman%20Berbasis%20Objek/PostTest/WingsNusaVoyage/src/views/AdminEditAirline.java</file>
+            <file>file:/D:/Semester%203/Pemrograman%20Berbasis%20Objek/PostTest/WingsNusaVoyage/src/views/AdminDashboard.java</file>
         </group>
     </open-files>
 </project-private>

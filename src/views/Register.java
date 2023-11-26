@@ -5,6 +5,8 @@
 package views;
 
 import apps.MainFrame;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import models.Admin;
 import models.Customer;
@@ -189,7 +191,7 @@ public class Register extends javax.swing.JPanel {
 
     private void signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupActionPerformed
         String username = this.username.getText();
-        String password = this.password.getText();
+        String password = new String(this.password.getPassword());
         Platform app = this.mainFrame.getPlatform();
         UserImp customer;
         UserImp admin;
@@ -202,7 +204,12 @@ public class Register extends javax.swing.JPanel {
         if (this.isAdmin.isSelected() && !"".equals(username) && !"".equals(password)) {
             admin = new Admin(username, password);
             app.addUser(admin);
-            this.mainFrame.getAdminDashboard();
+            try {
+                mainFrame.setCurrentUser(app.getUserObject(username, password));
+                this.mainFrame.getAdminDashboard();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "register gagal");
+            }
         } else if (this.isCustomer.isSelected() && !"".equals(username) && !"".equals(password)) {
             customer = new Customer(username, password);
             app.addUser(customer);
@@ -210,10 +217,10 @@ public class Register extends javax.swing.JPanel {
                 this.mainFrame.setCurrentUser(app.getUserObject(username, password));
                 this.mainFrame.getCustomerDashboard();
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "not found");
+                JOptionPane.showMessageDialog(this, "register gagal");
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Gagal Register");
+            JOptionPane.showMessageDialog(this, "Pilih salah satu role, dan isi semua field");
         }
     }//GEN-LAST:event_signupActionPerformed
 

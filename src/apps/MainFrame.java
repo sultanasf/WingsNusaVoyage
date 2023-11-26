@@ -7,6 +7,8 @@ import models.Plane;
 import models.Platform;
 import models.implementations.AirlineImp;
 import views.AdminDashboard;
+import views.AdminAddAirline;
+import views.AdminEditAirline;
 import views.BookingAirline;
 import views.CustomerDashboard;
 import views.CustomerEditProfil;
@@ -51,6 +53,14 @@ public class MainFrame extends javax.swing.JFrame {
         changeView(new AdminDashboard(this));
     }
 
+    public void getAdminAddAirline() {
+        changeView(new AdminAddAirline(this));
+    }
+
+    public void getAdminEditAirline(AirlineImp airline) {
+        changeView(new AdminEditAirline(this, airline));
+    }
+
     public void getCustomerDashboard() {
         changeView(new CustomerDashboard(this));
     }
@@ -78,6 +88,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Wings Nusa Voyage");
+        setResizable(false);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -112,11 +123,17 @@ public class MainFrame extends javax.swing.JFrame {
         /* Create and display the form */
         SwingUtilities.invokeLater(() -> {
             MainFrame mainFrame = new MainFrame();
-            AirlineImp airline1 = new Plane("Boeing", "Surabaya", "Blitar", "jsdwhuwhwugryw");
-            AirlineImp airline2 = new Plane("Boeing", "Jakarta", "Malang", "advbavdhafdaghdfagdfadghfaghdfad");
+            Plane plane1 = new Plane("Boeing", "Surabaya", "Blitar", "jsdwhuwhwugryw");
+            plane1.setHarga(800000);
+            plane1.setMaskapai("Air Asia");
+            plane1.setAvailableSeats(80);
+            Plane plane2 = new Plane("Boeing", "Jakarta", "Malang", "advbavdhafdaghdfagdfadghfaghdfad");
+            plane2.setHarga(750000);
+            plane2.setMaskapai("Batik Air");
+            plane2.setAvailableSeats(100);
+            AirlineImp airline1 = plane1;
+            AirlineImp airline2 = plane2;
             mainFrame.getPlatform().addAirlines(airline1);
-            mainFrame.getPlatform().addAirlines(airline2);
-            mainFrame.getPlatform().addAirlines(airline2);
             mainFrame.getPlatform().addAirlines(airline2);
             mainFrame.setVisible(true);
             mainFrame.getRegisterView();

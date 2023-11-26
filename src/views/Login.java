@@ -6,8 +6,6 @@ package views;
 
 import apps.MainFrame;
 import helper.Auth;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import models.implementations.UserImp;
 
