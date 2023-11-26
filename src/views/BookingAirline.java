@@ -8,6 +8,7 @@ import apps.MainFrame;
 import javax.swing.JPanel;
 import models.implementations.AirlineImp;
 import views.components.CardAirline;
+import views.components.DetailAirline;
 
 /**
  *
@@ -26,9 +27,7 @@ public class BookingAirline extends javax.swing.JPanel {
         initComponents();
         this.PanelCard.removeAll();
         
-        for(AirlineImp airline : mainFrame.getPlatform().getAirline()) {
-            getCardAirline(airline);
-        }
+        getListCard();
     }
     
     public void listCardAirline(JPanel component) {
@@ -37,8 +36,32 @@ public class BookingAirline extends javax.swing.JPanel {
         this.PanelCard.repaint();
     }
     
+    public MainFrame getMainFrame() {
+        return this.mainFrame;
+    }
+    
+    public void changePanel(JPanel view) {
+        this.PanelCard.removeAll();
+        this.PanelCard.repaint();
+        this.PanelCard.add(view);
+        this.PanelCard.validate();
+    }
+    
+    public void getListCard() {
+        this.PanelCard.removeAll();
+        this.PanelCard.repaint();
+        for(AirlineImp airline : mainFrame.getPlatform().getAirline()) {
+            getCardAirline(airline);
+        }
+        this.PanelCard.validate();
+    }
+    
     public void getCardAirline(AirlineImp airline) {
-        listCardAirline(new CardAirline(airline));
+        listCardAirline(new CardAirline(airline, this));
+    }
+    
+    public void getDetailAirline(AirlineImp airline) {
+        changePanel(new DetailAirline(airline, this));
     }
 
     /**
@@ -52,6 +75,7 @@ public class BookingAirline extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         PanelCard = new javax.swing.JPanel();
 
@@ -60,6 +84,14 @@ public class BookingAirline extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
         jLabel1.setText("WingsNusaVoyage");
 
+        jButton1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -67,13 +99,17 @@ public class BookingAirline extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(495, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 354, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(69, 69, 69))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -100,9 +136,14 @@ public class BookingAirline extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.mainFrame.getCustomerDashboard();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelCard;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

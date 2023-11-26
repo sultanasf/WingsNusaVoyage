@@ -52,11 +52,8 @@
                       <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="cart" min="-2" pref="115" max="-2" attributes="0"/>
-                          <Component id="classLine" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+                      <Component id="classLine" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -65,6 +62,10 @@
               <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="availableSeats" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
+              <Component id="cart" min="-2" pref="115" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <Component id="detail" min="-2" pref="115" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
@@ -92,6 +93,7 @@
                   <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="availableSeats" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cart" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                  <Component id="detail" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
@@ -215,6 +217,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Add to Cart"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cartActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
@@ -226,6 +231,14 @@
         </Property>
         <Property name="text" type="java.lang.String" value="----------------------------------------------------------------------------------------------------------------------------------"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="detail">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Detail"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="detailActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
