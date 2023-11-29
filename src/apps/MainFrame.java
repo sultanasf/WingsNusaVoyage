@@ -10,6 +10,7 @@ import views.AdminDashboard;
 import views.AdminAddAirline;
 import views.AdminEditAirline;
 import views.BookingAirline;
+import views.CartCustomer;
 import views.CustomerDashboard;
 import views.CustomerEditProfil;
 import views.Login;
@@ -67,6 +68,10 @@ public class MainFrame extends javax.swing.JFrame {
 
     public void getCustomerEditProfil() {
         changeView(new CustomerEditProfil(this));
+    }
+    
+    public void getCustomerCart() {
+        changeView(new CartCustomer(this));
     }
 
     public void getLoginView() {

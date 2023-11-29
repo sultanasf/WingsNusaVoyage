@@ -241,6 +241,11 @@ public class CustomerDashboard extends javax.swing.JPanel {
         );
 
         cart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/cart.png"))); // NOI18N
+        cart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cartActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Cart");
 
@@ -329,6 +334,10 @@ public class CustomerDashboard extends javax.swing.JPanel {
     private void bookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingActionPerformed
         mainFrame.getBookingAirline();
     }//GEN-LAST:event_bookingActionPerformed
+
+    private void cartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartActionPerformed
+        mainFrame.getCustomerCart();
+    }//GEN-LAST:event_cartActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

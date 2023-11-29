@@ -6,15 +6,18 @@ package views;
 
 import apps.MainFrame;
 import javax.swing.JPanel;
+import models.Customer;
 import models.implementations.AirlineImp;
+import models.implementations.UserImp;
 import views.components.CardAirline;
-import views.components.DetailAirline;
+import views.components.CartAirline;
+
 
 /**
  *
  * @author HP
  */
-public class BookingAirline extends javax.swing.JPanel {
+public class CartCustomer extends javax.swing.JPanel {
 
     /**
      * Creates new form BookingAirline
@@ -22,7 +25,7 @@ public class BookingAirline extends javax.swing.JPanel {
     
     private MainFrame mainFrame;
     
-    public BookingAirline(MainFrame mainFrame) {
+    public CartCustomer(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
         initComponents();
         this.PanelCard.removeAll();
@@ -50,18 +53,20 @@ public class BookingAirline extends javax.swing.JPanel {
     public void getListCard() {
         this.PanelCard.removeAll();
         this.PanelCard.repaint();
-        for(AirlineImp airline : mainFrame.getPlatform().getAirline()) {
-            getCardAirline(airline);
+        UserImp user = mainFrame.getPlatform().getUserIndex(mainFrame.getCurrentUser());
+        if(user instanceof Customer) {
+            Customer customer = (Customer) user;
+            
+            for(AirlineImp airline : customer.getCart().getListcart()) {
+                getCardAirline(airline);
+            }
+            this.PanelCard.validate();
         }
-        this.PanelCard.validate();
+        
     }
     
     public void getCardAirline(AirlineImp airline) {
-        listCardAirline(new CardAirline(airline, this));
-    }
-    
-    public void getDetailAirline(AirlineImp airline) {
-        changePanel(new DetailAirline(airline, this));
+        listCardAirline(new CartAirline(airline, this));
     }
 
     /**
@@ -121,7 +126,7 @@ public class BookingAirline extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
                 .addContainerGap())
@@ -130,9 +135,9 @@ public class BookingAirline extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

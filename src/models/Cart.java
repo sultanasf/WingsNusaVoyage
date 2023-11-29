@@ -50,4 +50,15 @@ public class Cart {
         return listCart.get(index);
     }
     
+    public int getObject(AirlineImp airline) throws Exception{
+        int index = 0;
+        for(AirlineImp airlin : listCart) {
+            if(airlin.getDescription().equals(airline.getDescription())) {
+                return index;
+            }
+            index++;
+        }
+        throw new Exception("cart not found");
+    }
+    
 }
