@@ -4,7 +4,7 @@ package models.implementations;
 import models.interfaces.Auth;
 import models.interfaces.User;
 
-public abstract class UserImp implements User, Auth{
+public class UserImp implements User, Auth{
     
     private String username;
     private String password;

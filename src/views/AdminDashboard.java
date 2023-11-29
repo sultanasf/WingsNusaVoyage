@@ -5,6 +5,13 @@
 package views;
 
 import apps.MainFrame;
+import java.util.ArrayList;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.table.DefaultTableModel;
+import models.Admin;
+import models.Helicopter;
+import models.Plane;
+import models.implementations.AirlineImp;
 
 /**
  *
@@ -15,12 +22,44 @@ public class AdminDashboard extends javax.swing.JPanel {
     /**
      * Creates new form AdminDashboard
      */
-    
     private MainFrame mainFrame;
+    private Admin admin;
     
     public AdminDashboard(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
+        this.admin = (Admin) this.mainFrame.getPlatform().getUserIndex(mainFrame.getCurrentUser());
         initComponents();
+        makeTableListener();
+        bindData();
+    }
+    
+    private void makeTableListener() {
+        airlineTable.getSelectionModel().addListSelectionListener((ListSelectionEvent event) -> {
+            boolean isSelected = !airlineTable.getSelectionModel().isSelectionEmpty();
+            btnDeleteAirline.setEnabled(isSelected);
+            btnEdit.setEnabled(isSelected);
+            btnAddAirline.setEnabled(!isSelected);
+        });
+    }
+    
+    private void bindData() {
+        int i = 0;
+        ArrayList<AirlineImp> airlines = mainFrame.getPlatform().getAirline();
+        DefaultTableModel tableModel = (DefaultTableModel) airlineTable.getModel();
+        tableModel.setRowCount(airlines.size());
+        for (AirlineImp airline : airlines) {
+            if (airline instanceof Plane) {
+                tableModel.setValueAt("Pesawat", i, 0);
+            } else if (airline instanceof Helicopter) {
+                tableModel.setValueAt("Helikopter", i, 0);
+            }
+            tableModel.setValueAt(airline.getType(), i, 1);
+            tableModel.setValueAt(airline.getClassAirline(), i, 2);
+            tableModel.setValueAt(airline.getOrigin(), i, 3);
+            tableModel.setValueAt(airline.getDestination(), i, 4);
+            tableModel.setValueAt("Rp " + Integer.toString(airline.getHarga()), i, 5);
+            i++;
+        }
     }
 
     /**
@@ -32,19 +71,157 @@ public class AdminDashboard extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        airlineTable = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        btnAddAirline = new javax.swing.JButton();
+        btnDeleteAirline = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
+        btnRefresh = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
+
+        airlineTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Vehicle", "Type", "Class", "Origin", "Destination", "Price"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(airlineTable);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Admin Dashboard");
+
+        btnAddAirline.setText("Add");
+        btnAddAirline.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddAirlineActionPerformed(evt);
+            }
+        });
+
+        btnDeleteAirline.setText("Delete");
+        btnDeleteAirline.setEnabled(false);
+        btnDeleteAirline.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteAirlineActionPerformed(evt);
+            }
+        });
+
+        btnLogout.setBackground(new java.awt.Color(255, 51, 51));
+        btnLogout.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
+        btnLogout.setText("Log out");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
+
+        btnRefresh.setText("🔃");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
+
+        btnEdit.setText("Detail/Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 705, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnLogout)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnDeleteAirline))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnAddAirline, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRefresh)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEdit)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAddAirline)
+                    .addComponent(btnRefresh)
+                    .addComponent(btnEdit))
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDeleteAirline)
+                    .addComponent(btnLogout))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnDeleteAirlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteAirlineActionPerformed
+        int selectedRow = airlineTable.getSelectedRow();
+        mainFrame.getPlatform().deleteFromIndexAirline(selectedRow);
+        bindData();
+        airlineTable.clearSelection();
+    }//GEN-LAST:event_btnDeleteAirlineActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        mainFrame.getRegisterView();
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnAddAirlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAirlineActionPerformed
+        mainFrame.getAdminAddAirline();
+    }//GEN-LAST:event_btnAddAirlineActionPerformed
+
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        bindData();
+        airlineTable.clearSelection();
+    }//GEN-LAST:event_btnRefreshActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        AirlineImp airline = mainFrame.getPlatform().getAirLinesIndex(airlineTable.getSelectedRow());
+        mainFrame.getAdminEditAirline(airline);
+    }//GEN-LAST:event_btnEditActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable airlineTable;
+    private javax.swing.JButton btnAddAirline;
+    private javax.swing.JButton btnDeleteAirline;
+    private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnRefresh;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

@@ -20,13 +20,11 @@ import models.implementations.UserImp;
 public class Register extends javax.swing.JPanel {
 
     private MainFrame mainFrame;
-    
+
     public Register(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
         initComponents();
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -144,7 +142,7 @@ public class Register extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(152, 152, 152)
                         .addComponent(jLabel2)))
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,30 +188,39 @@ public class Register extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupActionPerformed
         String username = this.username.getText();
-        String password = this.password.getText();
+        String password = new String(this.password.getPassword());
         Platform app = this.mainFrame.getPlatform();
         UserImp customer;
         UserImp admin;
-        
-        if(this.isAdmin.isSelected() && !"".equals(username) && !"".equals(password)) {
+
+        if (this.isAdmin.isSelected() && this.isCustomer.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Pilih salah satu role");
+            return;
+        }
+
+        if (this.isAdmin.isSelected() && !"".equals(username) && !"".equals(password)) {
             admin = new Admin(username, password);
             app.addUser(admin);
-            this.mainFrame.getAdminDashboard();
-        }
-        else if(this.isCustomer.isSelected() && !"".equals(username) && !"".equals(password)) {
+            try {
+                mainFrame.setCurrentUser(app.getUserObject(username, password));
+                this.mainFrame.getAdminDashboard();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "register gagal");
+            }
+        } else if (this.isCustomer.isSelected() && !"".equals(username) && !"".equals(password)) {
             customer = new Customer(username, password);
             app.addUser(customer);
             try {
                 this.mainFrame.setCurrentUser(app.getUserObject(username, password));
+                this.mainFrame.getCustomerDashboard();
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "not found");
+                JOptionPane.showMessageDialog(this, "register gagal");
             }
-            this.mainFrame.getCustomerDashboard();
-        }
-        else {
-            JOptionPane.showMessageDialog(this, "Gagal Register");
+        } else {
+            JOptionPane.showMessageDialog(this, "Pilih salah satu role, dan isi semua field");
         }
     }//GEN-LAST:event_signupActionPerformed
 
