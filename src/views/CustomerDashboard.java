@@ -328,7 +328,7 @@ public class CustomerDashboard extends javax.swing.JPanel {
     }//GEN-LAST:event_editProfilActionPerformed
 
     private void historyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historyActionPerformed
-        // TODO add your handling code here:
+        mainFrame.getHistoryTiket();
     }//GEN-LAST:event_historyActionPerformed
 
     private void bookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingActionPerformed

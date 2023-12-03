@@ -13,6 +13,7 @@ import views.BookingAirline;
 import views.CartCustomer;
 import views.CustomerDashboard;
 import views.CustomerEditProfil;
+import views.HistoryTiket;
 import views.Login;
 import views.Register;
 
@@ -80,6 +81,10 @@ public class MainFrame extends javax.swing.JFrame {
 
     public void getBookingAirline() {
         changeView(new BookingAirline(this));
+    }
+    
+    public void getHistoryTiket(){
+        changeView(new HistoryTiket(this));
     }
 
     /**
