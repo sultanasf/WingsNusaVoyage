@@ -49,9 +49,11 @@ public class Register extends javax.swing.JPanel {
         signIn = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 51));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Plus Jakarta Sans ExtraBold", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("WingsNusaVoyage");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -60,8 +62,8 @@ public class Register extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(495, Short.MAX_VALUE))
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -71,29 +73,38 @@ public class Register extends javax.swing.JPanel {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 51));
 
-        jLabel2.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setFont(new java.awt.Font("Plus Jakarta Sans ExtraBold", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Register");
 
-        jLabel3.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
+        username.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 12)); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Plus Jakarta Sans ExtraBold", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Username");
 
-        jLabel4.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel4.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Password");
 
-        isAdmin.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
-        isAdmin.setForeground(new java.awt.Color(51, 51, 51));
-        isAdmin.setText("Admin");
+        password.setFont(new java.awt.Font("Plus Jakarta Sans", 0, 12)); // NOI18N
 
-        isCustomer.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
-        isCustomer.setForeground(new java.awt.Color(51, 51, 51));
+        isAdmin.setFont(new java.awt.Font("Plus Jakarta Sans ExtraBold", 1, 12)); // NOI18N
+        isAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        isAdmin.setText("Admin");
+        isAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                isAdminActionPerformed(evt);
+            }
+        });
+
+        isCustomer.setFont(new java.awt.Font("Plus Jakarta Sans", 1, 12)); // NOI18N
+        isCustomer.setForeground(new java.awt.Color(255, 255, 255));
         isCustomer.setText("Customer");
 
-        signup.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
+        signup.setFont(new java.awt.Font("Plus Jakarta Sans ExtraBold", 1, 12)); // NOI18N
         signup.setText("Sign Up");
         signup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,8 +112,8 @@ public class Register extends javax.swing.JPanel {
             }
         });
 
-        signIn.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
-        signIn.setForeground(new java.awt.Color(51, 51, 51));
+        signIn.setFont(new java.awt.Font("Plus Jakarta Sans ExtraBold", 1, 12)); // NOI18N
+        signIn.setForeground(new java.awt.Color(255, 255, 255));
         signIn.setText("Sign in");
         signIn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -110,8 +121,8 @@ public class Register extends javax.swing.JPanel {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel6.setFont(new java.awt.Font("Plus Jakarta Sans ExtraBold", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("or");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -140,9 +151,9 @@ public class Register extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(signIn))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(152, 152, 152)
+                        .addGap(145, 145, 145)
                         .addComponent(jLabel2)))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,7 +185,7 @@ public class Register extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(150, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(143, 143, 143))
         );
@@ -182,7 +193,7 @@ public class Register extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42))
         );
@@ -227,6 +238,10 @@ public class Register extends javax.swing.JPanel {
     private void signInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signInMouseClicked
         mainFrame.getLoginView();
     }//GEN-LAST:event_signInMouseClicked
+
+    private void isAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_isAdminActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
