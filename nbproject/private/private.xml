@@ -3,27 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/KULEEYAH/Semester%203/Praktikum%20OOP/UAS/WingsNusaVoyage/WingsNusaVoyage/src/views/HistoryTiket.java</file>
-            <file>file:/D:/KULEEYAH/Semester%203/Praktikum%20OOP/UAS/WingsNusaVoyage/WingsNusaVoyage/src/views/AdminAddAirline.java</file>
-            <file>file:/D:/KULEEYAH/Semester%203/Praktikum%20OOP/UAS/WingsNusaVoyage/WingsNusaVoyage/src/views/CartCustomer.java</file>
-            <file>file:/D:/KULEEYAH/Semester%203/Praktikum%20OOP/UAS/WingsNusaVoyage/WingsNusaVoyage/src/assets/cart.png</file>
-            <file>file:/D:/KULEEYAH/Semester%203/Praktikum%20OOP/UAS/WingsNusaVoyage/WingsNusaVoyage/src/assets/history.png</file>
-            <file>file:/D:/KULEEYAH/Semester%203/Praktikum%20OOP/UAS/WingsNusaVoyage/WingsNusaVoyage/src/views/AdminDashboard.java</file>
-            <file>file:/D:/KULEEYAH/Semester%203/Praktikum%20OOP/UAS/WingsNusaVoyage/WingsNusaVoyage/src/apps/MainFrame.java</file>
-            <file>file:/D:/KULEEYAH/Semester%203/Praktikum%20OOP/UAS/WingsNusaVoyage/WingsNusaVoyage/src/views/Login.java</file>
-            <file>file:/D:/KULEEYAH/Semester%203/Praktikum%20OOP/UAS/WingsNusaVoyage/WingsNusaVoyage/src/views/components/DetailAirline.java</file>
-            <file>file:/D:/KULEEYAH/Semester%203/Praktikum%20OOP/UAS/WingsNusaVoyage/WingsNusaVoyage/src/models/implementations/UserImp.java</file>
-            <file>file:/D:/KULEEYAH/Semester%203/Praktikum%20OOP/UAS/WingsNusaVoyage/WingsNusaVoyage/src/views/components/CardAirline.java</file>
-            <file>file:/D:/KULEEYAH/Semester%203/Praktikum%20OOP/UAS/WingsNusaVoyage/WingsNusaVoyage/src/views/components/CartAirline.java</file>
-            <file>file:/D:/KULEEYAH/Semester%203/Praktikum%20OOP/UAS/WingsNusaVoyage/WingsNusaVoyage/src/views/Register.java</file>
-            <file>file:/D:/KULEEYAH/Semester%203/Praktikum%20OOP/UAS/WingsNusaVoyage/WingsNusaVoyage/src/assets/airline.png</file>
-            <file>file:/D:/KULEEYAH/Semester%203/Praktikum%20OOP/UAS/WingsNusaVoyage/WingsNusaVoyage/src/models/implementations/AirlineImp.java</file>
-            <file>file:/D:/KULEEYAH/Semester%203/Praktikum%20OOP/UAS/WingsNusaVoyage/WingsNusaVoyage/src/views/AdminEditAirline.java</file>
-            <file>file:/D:/KULEEYAH/Semester%203/Praktikum%20OOP/UAS/WingsNusaVoyage/WingsNusaVoyage/src/views/components/CardHistory.java</file>
-            <file>file:/D:/KULEEYAH/Semester%203/Praktikum%20OOP/UAS/WingsNusaVoyage/WingsNusaVoyage/src/helper/Auth.java</file>
-            <file>file:/D:/KULEEYAH/Semester%203/Praktikum%20OOP/UAS/WingsNusaVoyage/WingsNusaVoyage/src/views/CustomerDashboard.java</file>
-            <file>file:/D:/KULEEYAH/Semester%203/Praktikum%20OOP/UAS/WingsNusaVoyage/WingsNusaVoyage/src/views/BookingAirline.java</file>
-            <file>file:/D:/KULEEYAH/Semester%203/Praktikum%20OOP/UAS/WingsNusaVoyage/WingsNusaVoyage/src/views/CustomerEditProfil.java</file>
+            <file>file:/D:/KULEEYAH/Semester%203/Praktikum%20OOP/UAS/WingsNusaVoyage/src/views/Login.java</file>
+            <file>file:/D:/KULEEYAH/Semester%203/Praktikum%20OOP/UAS/WingsNusaVoyage/src/views/Register.java</file>
+            <file>file:/D:/KULEEYAH/Semester%203/Praktikum%20OOP/UAS/WingsNusaVoyage/src/views/HistoryTiket.java</file>
         </group>
     </open-files>
 </project-private>
