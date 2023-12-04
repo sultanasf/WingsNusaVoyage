@@ -1,5 +1,6 @@
 package apps;
 
+import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import models.Helicopter;
@@ -43,6 +44,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.getContentPane().removeAll();
         this.getContentPane().add(view);
         this.pack();
+        setLocationRelativeTo(null);
         this.revalidate();
         this.repaint();
     }
