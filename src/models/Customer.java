@@ -1,19 +1,25 @@
-
 package models;
+
 import models.implementations.UserImp;
 import java.util.ArrayList;
 
-public class Customer extends UserImp{
-    
+public class Customer extends UserImp {
+
     private String email;
     private String noTelp;
     private Cart cart;
     private History history;
-    
+    private Tabungan tabungan;
+
     public Customer(String username, String password) {
         super(username, password, "customer");
         this.cart = new Cart();
         this.history = new History(new ArrayList<>());
+        this.tabungan = new Tabungan();
+    }
+
+    public Tabungan getTabungan() {
+        return tabungan;
     }
 
     public String getEmail() {
@@ -31,7 +37,7 @@ public class Customer extends UserImp{
     public void setNoTelp(String noTelp) {
         this.noTelp = noTelp;
     }
-    
+
     public Cart getCart() {
         return this.cart;
     }
@@ -39,6 +45,5 @@ public class Customer extends UserImp{
     public History getHistory() {
         return this.history;
     }
-    
-    
+
 }

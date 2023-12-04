@@ -5,8 +5,6 @@
 package views;
 
 import apps.MainFrame;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import models.Admin;
 import models.Customer;
@@ -204,8 +202,7 @@ public class Register extends javax.swing.JPanel {
         String username = this.username.getText();
         String password = new String(this.password.getPassword());
         Platform app = this.mainFrame.getPlatform();
-        UserImp customer;
-        UserImp admin;
+        UserImp user;
 
         if (this.isAdmin.isSelected() && this.isCustomer.isSelected()) {
             JOptionPane.showMessageDialog(this, "Pilih salah satu role");
@@ -213,8 +210,8 @@ public class Register extends javax.swing.JPanel {
         }
 
         if (this.isAdmin.isSelected() && !"".equals(username) && !"".equals(password)) {
-            admin = new Admin(username, password);
-            app.addUser(admin);
+            user = new Admin(username, password);
+            app.addUser(user);
             try {
                 mainFrame.setCurrentUser(app.getUserObject(username, password));
                 this.mainFrame.getAdminDashboard();
@@ -222,8 +219,8 @@ public class Register extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "register gagal");
             }
         } else if (this.isCustomer.isSelected() && !"".equals(username) && !"".equals(password)) {
-            customer = new Customer(username, password);
-            app.addUser(customer);
+            user = new Customer(username, password);
+            app.addUser(user);
             try {
                 this.mainFrame.setCurrentUser(app.getUserObject(username, password));
                 this.mainFrame.getCustomerDashboard();

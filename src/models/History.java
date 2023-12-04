@@ -9,7 +9,6 @@ public class History {
     private ArrayList<AirlineImp> historyList;
 
     public History(ArrayList<AirlineImp> historyList) {
-        this.historyList = new ArrayList<>();
         this.historyList = historyList;
     }
     
