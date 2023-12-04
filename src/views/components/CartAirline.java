@@ -194,6 +194,7 @@ public class CartAirline extends javax.swing.JPanel {
                 if(checkout) {
                     JOptionPane.showMessageDialog(this, "Hapus Berhasil");
                     customer.getCart().removeCart(index);
+                    airline.setBookedSeats(airline.getBookedSeats() - 1);
                 }
                 else{
                     JOptionPane.showMessageDialog(this, "Hapus gagal");

@@ -15,10 +15,9 @@ import views.BookingAirline;
  */
 public class CardAirline extends javax.swing.JPanel {
 
-
     private AirlineImp airline;
     private BookingAirline bookingAirline;
-    
+
     public CardAirline(AirlineImp airline, BookingAirline bookingAirline) {
         this.bookingAirline = bookingAirline;
         this.airline = airline;
@@ -189,11 +188,15 @@ public class CardAirline extends javax.swing.JPanel {
     private void cartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartActionPerformed
         int currentUser = this.bookingAirline.getMainFrame().getCurrentUser();
         Customer customer = (Customer) this.bookingAirline.getMainFrame().getPlatform().getUserIndex(currentUser);
-        boolean succes = customer.getCart().addCart(airline);
-        if(succes) {
-            JOptionPane.showMessageDialog(this, "Berhasil ditambahkan ke cart !");
+        if (!airline.reserveSeats()) {
+            JOptionPane.showMessageDialog(this, "Gagal Menambahkan ke Cart, seat penuh !");
+            return;
         }
-        else {
+        boolean succes = customer.getCart().addCart(airline);
+        if (succes) {
+            this.availableSeats.setText(Integer.toString(airline.availableSeats()));
+            JOptionPane.showMessageDialog(this, "Berhasil ditambahkan ke cart !");
+        } else {
             JOptionPane.showMessageDialog(this, "Gagal Menambahkan ke Cart !");
         }
     }//GEN-LAST:event_cartActionPerformed
