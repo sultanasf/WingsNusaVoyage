@@ -11,10 +11,19 @@ public class History {
     public History(ArrayList<AirlineImp> historyList) {
         this.historyList = historyList;
     }
-
-    public void getHistory() {
-        for (AirlineImp booking : historyList) {
-            System.out.println(booking);
+    
+    public boolean addHistory (AirlineImp airline) {
+        try {
+            historyList.add(airline);
+            return true;
         }
+        catch (Exception e) {
+            return false;
+        }
+        
+    }
+    
+    public ArrayList<AirlineImp> getListcart() {
+        return this.historyList;
     }
 }
