@@ -4,8 +4,6 @@
  */
 package views.components;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import models.Customer;
 import models.implementations.AirlineImp;
@@ -21,12 +19,11 @@ public class CartAirline extends javax.swing.JPanel {
     /**
      * Creates new form CartComponent
      */
-    
     private AirlineImp airline;
     private CartCustomer cartCustomer;
     private int currentUser;
-    
-    public CartAirline(AirlineImp airline, CartCustomer cartCustomer ) {
+
+    public CartAirline(AirlineImp airline, CartCustomer cartCustomer) {
         this.cartCustomer = cartCustomer;
         this.airline = airline;
         initComponents();
@@ -165,16 +162,15 @@ public class CartAirline extends javax.swing.JPanel {
 
     private void checkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutActionPerformed
         UserImp user = this.cartCustomer.getMainFrame().getPlatform().getUserIndex(currentUser);
-        if(user instanceof Customer) {
+        if (user instanceof Customer) {
             Customer customer = (Customer) user;
             try {
                 int index = customer.getCart().getObject(airline);
                 boolean checkout = customer.getCart().checkout(index);
-                if(checkout) {
+                if (checkout) {
                     customer.getHistory().addHistory(airline);
                     JOptionPane.showMessageDialog(this, "Checkout Berhasil");
-                }
-                else{
+                } else {
                     JOptionPane.showMessageDialog(this, "CheckOut gagal");
                 }
             } catch (Exception ex) {
@@ -186,16 +182,16 @@ public class CartAirline extends javax.swing.JPanel {
 
     private void batalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batalActionPerformed
         UserImp user = this.cartCustomer.getMainFrame().getPlatform().getUserIndex(currentUser);
-        if(user instanceof Customer) {
+        if (user instanceof Customer) {
             Customer customer = (Customer) user;
             try {
                 int index = customer.getCart().getObject(airline);
                 boolean checkout = customer.getCart().removeCart(index);
-                if(checkout) {
+                if (checkout) {
                     JOptionPane.showMessageDialog(this, "Hapus Berhasil");
                     customer.getCart().removeCart(index);
-                }
-                else{
+                    airline.setBookedSeats(airline.getBookedSeats() - 1);
+                } else {
                     JOptionPane.showMessageDialog(this, "Hapus gagal");
                 }
             } catch (Exception ex) {

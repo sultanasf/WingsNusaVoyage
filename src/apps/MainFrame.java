@@ -1,9 +1,7 @@
 package apps;
 
-import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-import models.Helicopter;
 import models.Plane;
 import models.Platform;
 import models.implementations.AirlineImp;
@@ -138,11 +136,11 @@ public class MainFrame extends javax.swing.JFrame {
             Plane plane1 = new Plane("Boeing", "Surabaya", "Blitar", "jsdwhuwhwugryw");
             plane1.setHarga(800000);
             plane1.setMaskapai("Air Asia");
-            plane1.setAvailableSeats(80);
+            plane1.setTotalSeats(2);
             Plane plane2 = new Plane("Boeing", "Jakarta", "Malang", "advbavdhafdaghdfagdfadghfaghdfad");
             plane2.setHarga(750000);
             plane2.setMaskapai("Batik Air");
-            plane2.setAvailableSeats(100);
+            plane2.setTotalSeats(100);
             AirlineImp airline1 = plane1;
             AirlineImp airline2 = plane2;
             mainFrame.getPlatform().addAirlines(airline1);

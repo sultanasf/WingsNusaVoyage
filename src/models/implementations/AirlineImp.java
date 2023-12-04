@@ -11,7 +11,7 @@ public class AirlineImp implements Route, TypeAirline {
     private int seats;
     private int harga;
     private String classAirline;
-    private int availableSeats;
+    private int bookedSeats;
     private String description;
 
     public AirlineImp(String type, String destination, String origin, String description) {
@@ -21,7 +21,7 @@ public class AirlineImp implements Route, TypeAirline {
         this.seats = 0;
         this.harga = 0;
         this.classAirline = "economy";
-        this.availableSeats = seats;
+        this.bookedSeats = seats;
         this.description = description;
     }
 
@@ -33,12 +33,12 @@ public class AirlineImp implements Route, TypeAirline {
         this.harga = harga;
     }
 
-    public int getAvailableSeats() {
-        return availableSeats;
+    public int getBookedSeats() {
+        return bookedSeats;
     }
 
-    public void setAvailableSeats(int availableSeats) {
-        this.availableSeats = availableSeats;
+    public void setBookedSeats(int bookedSeats) {
+        this.bookedSeats = bookedSeats;
     }
 
     public String getDescription() {
@@ -76,18 +76,15 @@ public class AirlineImp implements Route, TypeAirline {
     }
 
     public boolean reserveSeats() {
-        if (availableSeats >= seats) {
+        if (bookedSeats >= seats) {
             return false;
         }
-        availableSeats += 1;
+        bookedSeats += 1;
         return true;
     }
 
     public int availableSeats() {
-        if (availableSeats >= seats) {
-            return 0;
-        }
-        return this.seats - this.availableSeats;
+        return this.seats - this.bookedSeats;
     }
 
     public void setDestination(String destination) {

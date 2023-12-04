@@ -6,7 +6,7 @@ import models.implementations.AirlineImp;
 import java.util.ArrayList;
 
 public class History {
-    private ArrayList<AirlineImp> historyList = new ArrayList();
+    private ArrayList<AirlineImp> historyList;
 
     public History(ArrayList<AirlineImp> historyList) {
         this.historyList = historyList;
