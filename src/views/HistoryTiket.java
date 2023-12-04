@@ -4,6 +4,7 @@ package views;
 import apps.MainFrame;
 import javax.swing.JPanel;
 import models.History;
+import models.Customer;
 import models.implementations.AirlineImp;
 import models.implementations.UserImp;
 import views.components.CardHistory;
@@ -42,10 +43,15 @@ public class HistoryTiket extends javax.swing.JPanel {
     public void getListCard() {
         this.PanelCard.removeAll();
         this.PanelCard.repaint();
-        for(AirlineImp airline : mainFrame.getPlatform().getAirline()) {
-            getCardHistory(airline);
+        if(user instanceof Customer) {
+            Customer customer = (Customer) user;
+            if (customer.getHistory() != null) {
+                for (AirlineImp airline : customer.getHistory().getListcart()) {
+                    getCardHistory(airline);
+                }
+            }
+            this.PanelCard.validate();
         }
-        this.PanelCard.validate();
     }
     
     public void getCardHistory(AirlineImp airline){

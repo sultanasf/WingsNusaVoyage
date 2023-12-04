@@ -8,10 +8,12 @@ public class Customer extends UserImp{
     private String email;
     private String noTelp;
     private Cart cart;
+    private History history;
     
     public Customer(String username, String password) {
         super(username, password, "customer");
         this.cart = new Cart();
+        this.history = new History(new ArrayList<>());
     }
 
     public String getEmail() {
@@ -33,5 +35,10 @@ public class Customer extends UserImp{
     public Cart getCart() {
         return this.cart;
     }
+
+    public History getHistory() {
+        return this.history;
+    }
+    
     
 }

@@ -171,6 +171,7 @@ public class CartAirline extends javax.swing.JPanel {
                 int index = customer.getCart().getObject(airline);
                 boolean checkout = customer.getCart().checkout(index);
                 if(checkout) {
+                    customer.getHistory().addHistory(airline);
                     JOptionPane.showMessageDialog(this, "Checkout Berhasil");
                 }
                 else{
