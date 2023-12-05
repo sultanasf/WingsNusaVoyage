@@ -22,7 +22,7 @@ public class CartAirline extends javax.swing.JPanel {
     private AirlineImp airline;
     private CartCustomer cartCustomer;
     private int currentUser;
-
+    
     public CartAirline(AirlineImp airline, CartCustomer cartCustomer) {
         this.cartCustomer = cartCustomer;
         this.airline = airline;
@@ -54,18 +54,27 @@ public class CartAirline extends javax.swing.JPanel {
         batal = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 204));
+        setBackground(new java.awt.Color(0, 0, 51));
 
+        jLabel2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
         jLabel2.setText("Origin");
 
+        jLabel3.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
         jLabel3.setText("Destination");
 
+        origin.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
         origin.setText("Surabaya");
 
+        destination.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
         destination.setText("Jakarta");
 
+        price.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
         price.setText("140000");
 
+        checkout.setBackground(new java.awt.Color(0, 0, 51));
+        checkout.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        checkout.setForeground(new java.awt.Color(255, 255, 255));
+        checkout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/iconCheckout.png"))); // NOI18N
         checkout.setText("Checkout");
         checkout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,8 +82,13 @@ public class CartAirline extends javax.swing.JPanel {
             }
         });
 
+        maskapai.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
         maskapai.setText("Airasia");
 
+        batal.setBackground(new java.awt.Color(0, 0, 51));
+        batal.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        batal.setForeground(new java.awt.Color(255, 255, 255));
+        batal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/back-square.png"))); // NOI18N
         batal.setText("Batal");
         batal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,57 +101,54 @@ public class CartAirline extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(price)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2)
-                        .addComponent(origin)))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(origin)
+                    .addComponent(price))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(destination)
-                                .addGap(67, 67, 67)
-                                .addComponent(maskapai))
+                                .addComponent(destination))
                             .addComponent(jLabel3))
-                        .addContainerGap(187, Short.MAX_VALUE))
+                        .addContainerGap(267, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(batal)
                         .addGap(18, 18, 18)
                         .addComponent(checkout)
-                        .addContainerGap())))
+                        .addGap(12, 12, 12))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(183, 183, 183)
+                .addComponent(maskapai)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(origin)
-                            .addComponent(destination))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                        .addComponent(maskapai)
-                        .addGap(18, 18, 18)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(origin)
+                    .addComponent(destination))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(maskapai)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(price)
                     .addComponent(checkout)
                     .addComponent(batal))
-                .addContainerGap())
+                .addGap(24, 24, 24))
         );
 
-        jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("BURUAN DIBELI");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -145,16 +156,16 @@ public class CartAirline extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(8, Short.MAX_VALUE)
+                .addContainerGap(10, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(10, 10, 10)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(70, 70, 70)
                 .addComponent(jLabel1)
                 .addContainerGap())
         );
@@ -166,9 +177,14 @@ public class CartAirline extends javax.swing.JPanel {
             Customer customer = (Customer) user;
             try {
                 int index = customer.getCart().getObject(airline);
+                if (!customer.getTabungan().tarik(this.airline.getHarga())) {
+                    JOptionPane.showMessageDialog(this, "CheckOut gagal, Saldo kurang");
+                    return;
+                }
                 boolean checkout = customer.getCart().checkout(index);
                 if (checkout) {
                     customer.getHistory().addHistory(airline);
+                    System.out.println(customer.getTabungan().getSaldo());
                     JOptionPane.showMessageDialog(this, "Checkout Berhasil");
                 } else {
                     JOptionPane.showMessageDialog(this, "CheckOut gagal");
