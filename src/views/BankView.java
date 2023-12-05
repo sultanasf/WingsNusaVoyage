@@ -185,10 +185,14 @@ public class BankView extends javax.swing.JPanel {
     }//GEN-LAST:event_batalActionPerformed
 
     private void btnTopUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTopUpActionPerformed
-        int nominalSaldo = Integer.valueOf(txtTopUp.getText());
-        currentCustomer.getTabungan().setor(nominalSaldo);
-        bindSaldo();
-        JOptionPane.showMessageDialog(this, "Top-up Berhasil");
+        try {
+            int nominalSaldo = Integer.valueOf(txtTopUp.getText());
+            currentCustomer.getTabungan().setor(nominalSaldo);
+            bindSaldo();
+            JOptionPane.showMessageDialog(this, "Top-up Berhasil");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Harus menggunakan angka");
+        }
     }//GEN-LAST:event_btnTopUpActionPerformed
 
 
