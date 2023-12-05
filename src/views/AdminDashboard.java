@@ -80,6 +80,9 @@ public class AdminDashboard extends javax.swing.JPanel {
         btnRefresh = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(0, 0, 51));
+
+        airlineTable.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
         airlineTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -105,10 +108,13 @@ public class AdminDashboard extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(airlineTable);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Admin Dashboard");
 
+        btnAddAirline.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
         btnAddAirline.setText("Add");
         btnAddAirline.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,6 +122,8 @@ public class AdminDashboard extends javax.swing.JPanel {
             }
         });
 
+        btnDeleteAirline.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        btnDeleteAirline.setForeground(new java.awt.Color(0, 0, 0));
         btnDeleteAirline.setText("Delete");
         btnDeleteAirline.setEnabled(false);
         btnDeleteAirline.addActionListener(new java.awt.event.ActionListener() {
@@ -125,7 +133,8 @@ public class AdminDashboard extends javax.swing.JPanel {
         });
 
         btnLogout.setBackground(new java.awt.Color(255, 51, 51));
-        btnLogout.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
+        btnLogout.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        btnLogout.setForeground(new java.awt.Color(255, 255, 255));
         btnLogout.setText("Log out");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,6 +149,7 @@ public class AdminDashboard extends javax.swing.JPanel {
             }
         });
 
+        btnEdit.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
         btnEdit.setText("Detail/Edit");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,7 +165,6 @@ public class AdminDashboard extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 705, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnLogout)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -165,22 +174,25 @@ public class AdminDashboard extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnRefresh)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnEdit)))
+                        .addComponent(btnEdit))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddAirline)
                     .addComponent(btnRefresh)
                     .addComponent(btnEdit))
-                .addGap(12, 12, 12)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDeleteAirline)
                     .addComponent(btnLogout))

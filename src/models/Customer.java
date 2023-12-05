@@ -15,7 +15,7 @@ public class Customer extends UserImp {
         super(username, password, "customer");
         this.cart = new Cart();
         this.history = new History(new ArrayList<>());
-        this.tabungan = new Tabungan(1000000);
+        this.tabungan = new Tabungan();
     }
 
     public Tabungan getTabungan() {
