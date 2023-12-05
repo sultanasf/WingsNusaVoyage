@@ -172,7 +172,6 @@ public class Register extends javax.swing.JPanel {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(4, 4, 4)
                 .addComponent(jLabel2)
                 .addGap(24, 24, 24)
                 .addComponent(jLabel3)
