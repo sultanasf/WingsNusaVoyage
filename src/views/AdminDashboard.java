@@ -6,6 +6,7 @@ package views;
 
 import apps.MainFrame;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.DefaultTableModel;
 import models.Admin;
@@ -201,10 +202,15 @@ public class AdminDashboard extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteAirlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteAirlineActionPerformed
-        int selectedRow = airlineTable.getSelectedRow();
-        mainFrame.getPlatform().deleteFromIndexAirline(selectedRow);
-        bindData();
-        airlineTable.clearSelection();
+        try {
+            int selectedRow = airlineTable.getSelectedRow();
+            mainFrame.getPlatform().deleteFromIndexAirline(selectedRow);
+            bindData();
+            airlineTable.clearSelection();
+
+        } catch (IndexOutOfBoundsException | IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, "Please select a row in the table.");
+        }
     }//GEN-LAST:event_btnDeleteAirlineActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
@@ -221,8 +227,14 @@ public class AdminDashboard extends javax.swing.JPanel {
     }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        AirlineImp airline = mainFrame.getPlatform().getAirLinesIndex(airlineTable.getSelectedRow());
-        mainFrame.getAdminEditAirline(airline);
+        try {
+            int selectedRow = airlineTable.getSelectedRow();
+            AirlineImp airline = mainFrame.getPlatform().getAirLinesIndex(selectedRow);
+            mainFrame.getAdminEditAirline(airline);
+
+        } catch (IndexOutOfBoundsException | IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, "Pilih kolom pada tabel terlebih dahulu");
+        }
     }//GEN-LAST:event_btnEditActionPerformed
 
 
