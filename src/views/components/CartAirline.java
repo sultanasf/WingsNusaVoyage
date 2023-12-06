@@ -22,7 +22,7 @@ public class CartAirline extends javax.swing.JPanel {
     private AirlineImp airline;
     private CartCustomer cartCustomer;
     private int currentUser;
-
+    
     public CartAirline(AirlineImp airline, CartCustomer cartCustomer) {
         this.cartCustomer = cartCustomer;
         this.airline = airline;
@@ -177,9 +177,14 @@ public class CartAirline extends javax.swing.JPanel {
             Customer customer = (Customer) user;
             try {
                 int index = customer.getCart().getObject(airline);
+                if (!customer.getTabungan().tarik(this.airline.getHarga())) {
+                    JOptionPane.showMessageDialog(this, "CheckOut gagal, Saldo kurang");
+                    return;
+                }
                 boolean checkout = customer.getCart().checkout(index);
                 if (checkout) {
                     customer.getHistory().addHistory(airline);
+                    System.out.println(customer.getTabungan().getSaldo());
                     JOptionPane.showMessageDialog(this, "Checkout Berhasil");
                 } else {
                     JOptionPane.showMessageDialog(this, "CheckOut gagal");

@@ -255,39 +255,44 @@ public class AdminAddAirline extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        String selectedVehicle = vehicleComboBox.getSelectedItem().toString();
-        String classAirline = classComboBox.getSelectedItem().toString();
-        String destination = txtDestination.getText();
-        String origin = txtOrigin.getText();
-        String type = txtType.getText();
-        String description = txtDescription.getText();
-        String custom = txtCustom.getText();
-        int seats = txtSeat.getText().isEmpty() ? 0 : Integer.valueOf(txtSeat.getText());
-        int price = txtPrice.getText().isEmpty() ? 0 : Integer.valueOf(txtPrice.getText());
+        try {
+            String selectedVehicle = vehicleComboBox.getSelectedItem().toString();
+            String classAirline = classComboBox.getSelectedItem().toString();
+            String destination = txtDestination.getText();
+            String origin = txtOrigin.getText();
+            String type = txtType.getText();
+            String description = txtDescription.getText();
+            String custom = txtCustom.getText();
+            int seats = txtSeat.getText().isEmpty() ? 0 : Integer.parseInt(txtSeat.getText());
+            int price = txtPrice.getText().isEmpty() ? 0 : Integer.parseInt(txtPrice.getText());
 
-        AirlineImp airline;
+            AirlineImp airline;
 
-        if (destination.isEmpty() || origin.isEmpty()
-                || seats == 0 || price == 0 || type.isEmpty()
-                || description.isEmpty() || custom.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Fill All Fields");
-            return;
+            if (destination.isEmpty() || origin.isEmpty() || seats <= 0 || price <= 0 || type.isEmpty()
+                    || description.isEmpty() || custom.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Kolom belum diisi");
+                return;
+            }
+
+            if (selectedVehicle.equals("Plane")) {
+                Plane plane = new Plane(type, destination, origin, description);
+                plane.setMaskapai(custom);
+                airline = plane;
+            } else {
+                Helicopter helicopter = new Helicopter(type, destination, origin, description);
+                helicopter.setPilot(custom);
+                airline = helicopter;
+            }
+
+            airline.setClassAirline(classAirline);
+            airline.setTotalSeats(seats);
+            airline.setHarga(price);
+
+            mainFrame.getPlatform().getAirline().add(airline);
+            mainFrame.getAdminDashboard();
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Masukkan price/seat menggunakan angka");
         }
-        if (selectedVehicle.equals("Plane")) {
-            Plane plane = new Plane(type, destination, origin, description);
-            plane.setMaskapai(custom);
-            airline = plane;
-        } else {
-            Helicopter helicopter = new Helicopter(type, destination, origin, description);
-            helicopter.setPilot(custom);
-            airline = helicopter;
-        }
-        airline.setClassAirline(classAirline);
-        airline.setTotalSeats(seats);
-        airline.setHarga(price);
-
-        mainFrame.getPlatform().getAirline().add(airline);
-        mainFrame.getAdminDashboard();
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void vehicleComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_vehicleComboBoxItemStateChanged
