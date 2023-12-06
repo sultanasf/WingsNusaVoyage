@@ -105,6 +105,11 @@ public class CustomerEditProfil extends javax.swing.JPanel {
         jLabel4.setText("No Telp");
 
         noTelp.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
+        noTelp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                noTelpKeyTyped(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -232,6 +237,13 @@ public class CustomerEditProfil extends javax.swing.JPanel {
         
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void noTelpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_noTelpKeyTyped
+        char e = evt.getKeyChar();
+        if(!Character.isDigit(e)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_noTelpKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

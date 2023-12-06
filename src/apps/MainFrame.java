@@ -15,6 +15,7 @@ import views.CustomerEditProfil;
 import views.HistoryTiket;
 import views.Login;
 import views.Register;
+import views.BankView;
 
 public class MainFrame extends javax.swing.JFrame {
 
@@ -70,7 +71,7 @@ public class MainFrame extends javax.swing.JFrame {
     public void getCustomerEditProfil() {
         changeView(new CustomerEditProfil(this));
     }
-    
+
     public void getCustomerCart() {
         changeView(new CartCustomer(this));
     }
@@ -82,9 +83,13 @@ public class MainFrame extends javax.swing.JFrame {
     public void getBookingAirline() {
         changeView(new BookingAirline(this));
     }
-    
-    public void getHistoryTiket(){
+
+    public void getHistoryTiket() {
         changeView(new HistoryTiket(this));
+    }
+
+    public void getBankView() {
+        changeView(new BankView(this));
     }
 
     /**

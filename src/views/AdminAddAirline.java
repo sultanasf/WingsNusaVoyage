@@ -46,8 +46,8 @@ public class AdminAddAirline extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        classComboBox = new javax.swing.JComboBox<>();
-        vehicleComboBox = new javax.swing.JComboBox<>();
+        classComboBox = new javax.swing.JComboBox<String>();
+        vehicleComboBox = new javax.swing.JComboBox<String>();
         jLabel7 = new javax.swing.JLabel();
         txtDescription = new javax.swing.JTextField();
         customLabel = new javax.swing.JLabel();
@@ -74,6 +74,11 @@ public class AdminAddAirline extends javax.swing.JPanel {
         txtDestination.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
 
         txtSeat.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
+        txtSeat.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSeatKeyTyped(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -96,10 +101,10 @@ public class AdminAddAirline extends javax.swing.JPanel {
         jLabel6.setText("Class");
 
         classComboBox.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
-        classComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Economy", "Business", "First Class" }));
+        classComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Economy", "Business", "First Class" }));
 
         vehicleComboBox.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
-        vehicleComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plane", "Helicopter" }));
+        vehicleComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Plane", "Helicopter" }));
         vehicleComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 vehicleComboBoxItemStateChanged(evt);
@@ -126,6 +131,11 @@ public class AdminAddAirline extends javax.swing.JPanel {
         txtPrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPriceActionPerformed(evt);
+            }
+        });
+        txtPrice.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPriceKeyTyped(evt);
             }
         });
 
@@ -255,39 +265,44 @@ public class AdminAddAirline extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        String selectedVehicle = vehicleComboBox.getSelectedItem().toString();
-        String classAirline = classComboBox.getSelectedItem().toString();
-        String destination = txtDestination.getText();
-        String origin = txtOrigin.getText();
-        String type = txtType.getText();
-        String description = txtDescription.getText();
-        String custom = txtCustom.getText();
-        int seats = txtSeat.getText().isEmpty() ? 0 : Integer.valueOf(txtSeat.getText());
-        int price = txtPrice.getText().isEmpty() ? 0 : Integer.valueOf(txtPrice.getText());
+        try {
+            String selectedVehicle = vehicleComboBox.getSelectedItem().toString();
+            String classAirline = classComboBox.getSelectedItem().toString();
+            String destination = txtDestination.getText();
+            String origin = txtOrigin.getText();
+            String type = txtType.getText();
+            String description = txtDescription.getText();
+            String custom = txtCustom.getText();
+            int seats = txtSeat.getText().isEmpty() ? 0 : Integer.parseInt(txtSeat.getText());
+            int price = txtPrice.getText().isEmpty() ? 0 : Integer.parseInt(txtPrice.getText());
 
-        AirlineImp airline;
+            AirlineImp airline;
 
-        if (destination.isEmpty() || origin.isEmpty()
-                || seats == 0 || price == 0 || type.isEmpty()
-                || description.isEmpty() || custom.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Fill All Fields");
-            return;
+            if (destination.isEmpty() || origin.isEmpty() || seats <= 0 || price <= 0 || type.isEmpty()
+                    || description.isEmpty() || custom.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Kolom belum diisi");
+                return;
+            }
+
+            if (selectedVehicle.equals("Plane")) {
+                Plane plane = new Plane(type, destination, origin, description);
+                plane.setMaskapai(custom);
+                airline = plane;
+            } else {
+                Helicopter helicopter = new Helicopter(type, destination, origin, description);
+                helicopter.setPilot(custom);
+                airline = helicopter;
+            }
+
+            airline.setClassAirline(classAirline);
+            airline.setTotalSeats(seats);
+            airline.setHarga(price);
+
+            mainFrame.getPlatform().getAirline().add(airline);
+            mainFrame.getAdminDashboard();
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Masukkan price/seat menggunakan angka");
         }
-        if (selectedVehicle.equals("Plane")) {
-            Plane plane = new Plane(type, destination, origin, description);
-            plane.setMaskapai(custom);
-            airline = plane;
-        } else {
-            Helicopter helicopter = new Helicopter(type, destination, origin, description);
-            helicopter.setPilot(custom);
-            airline = helicopter;
-        }
-        airline.setClassAirline(classAirline);
-        airline.setTotalSeats(seats);
-        airline.setHarga(price);
-
-        mainFrame.getPlatform().getAirline().add(airline);
-        mainFrame.getAdminDashboard();
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void vehicleComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_vehicleComboBoxItemStateChanged
@@ -302,6 +317,20 @@ public class AdminAddAirline extends javax.swing.JPanel {
     private void txtPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPriceActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPriceActionPerformed
+
+    private void txtSeatKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSeatKeyTyped
+        char e = evt.getKeyChar();
+        if(!Character.isDigit(e)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtSeatKeyTyped
+
+    private void txtPriceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPriceKeyTyped
+        char e = evt.getKeyChar();
+        if(!Character.isDigit(e)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPriceKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

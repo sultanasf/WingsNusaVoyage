@@ -86,7 +86,6 @@ public class AdminEditAirline extends javax.swing.JPanel {
         setBackground(new java.awt.Color(0, 0, 51));
 
         txtType.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
-        txtType.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -98,6 +97,11 @@ public class AdminEditAirline extends javax.swing.JPanel {
         txtDestination.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
 
         txtSeat.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
+        txtSeat.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSeatKeyTyped(evt);
+            }
+        });
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
@@ -154,6 +158,11 @@ public class AdminEditAirline extends javax.swing.JPanel {
         jLabel8.setText("Price");
 
         txtPrice.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
+        txtPrice.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPriceKeyTyped(evt);
+            }
+        });
 
         btnCancel.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
         btnCancel.setText("Cancel");
@@ -265,41 +274,46 @@ public class AdminEditAirline extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        String selectedVehicle = vehicleComboBox.getSelectedItem().toString();
-        String classAirline = classComboBox.getSelectedItem().toString();
-        String destination = txtDestination.getText();
-        String origin = txtOrigin.getText();
-        String type = txtType.getText();
-        String description = txtDescription.getText();
-        String custom = txtCustom.getText();
-        int seats = txtSeat.getText().isEmpty() ? 0 : Integer.valueOf(txtSeat.getText());
-        int price = txtPrice.getText().isEmpty() ? 0 : Integer.valueOf(txtPrice.getText());
+        try {
+            String selectedVehicle = vehicleComboBox.getSelectedItem().toString();
+            String classAirline = classComboBox.getSelectedItem().toString();
+            String destination = txtDestination.getText();
+            String origin = txtOrigin.getText();
+            String type = txtType.getText();
+            String description = txtDescription.getText();
+            String custom = txtCustom.getText();
+            int seats = txtSeat.getText().isEmpty() ? 0 : Integer.parseInt(txtSeat.getText());
+            int price = txtPrice.getText().isEmpty() ? 0 : Integer.parseInt(txtPrice.getText());
 
-        if (destination.isEmpty() || origin.isEmpty()
-                || seats == 0 || price == 0 || type.isEmpty()
-                || description.isEmpty() || custom.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Fill All Fields");
-            return;
+            if (destination.isEmpty() || origin.isEmpty() || seats == 0 || price == 0 || type.isEmpty()
+                    || description.isEmpty() || custom.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Kolom belum diisi");
+                return;
+            }
+
+            airline.setType(type);
+            airline.setOrigin(origin);
+            airline.setDestination(destination);
+            airline.setDescription(description);
+            airline.setClassAirline(classAirline);
+            airline.setTotalSeats(seats);
+            airline.setHarga(price);
+
+            if (selectedVehicle.equals("Plane")) {
+                Plane plane = (Plane) airline;
+                plane.setMaskapai(custom);
+                airline = plane;
+            } else {
+                Helicopter helicopter = (Helicopter) airline;
+                helicopter.setPilot(custom);
+                airline = helicopter;
+            }
+
+            mainFrame.getAdminDashboard();
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Masukkan price/seat menggunakan angka");
         }
-
-        airline.setType(type);
-        airline.setOrigin(origin);
-        airline.setDestination(destination);
-        airline.setDescription(description);
-        airline.setClassAirline(classAirline);
-        airline.setTotalSeats(seats);
-        airline.setHarga(price);
-        if (selectedVehicle.equals("Plane")) {
-            Plane plane = (Plane) airline;
-            plane.setMaskapai(custom);
-            airline = plane;
-        } else {
-            Helicopter helicopter = (Helicopter) airline;
-            helicopter.setPilot(custom);
-            airline = helicopter;
-        }
-
-        mainFrame.getAdminDashboard();
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void vehicleComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_vehicleComboBoxItemStateChanged
@@ -314,6 +328,20 @@ public class AdminEditAirline extends javax.swing.JPanel {
     private void vehicleComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vehicleComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_vehicleComboBoxActionPerformed
+
+    private void txtSeatKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSeatKeyTyped
+        char e = evt.getKeyChar();
+        if(!Character.isDigit(e)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtSeatKeyTyped
+
+    private void txtPriceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPriceKeyTyped
+        char e = evt.getKeyChar();
+        if(!Character.isDigit(e)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPriceKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
